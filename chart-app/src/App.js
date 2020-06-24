@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import { Line } from "react-chartjs-2";
-
+import { Line, Bar, Bubble } from "react-chartjs-2";
 const data = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
   datasets: [
@@ -16,16 +15,55 @@ const data = {
     {
       label: "Second dataset",
       data: [33, 25, 35, 51, 54, 76],
-      fill: false,
-      borderColor: "#742774"
+      fill: true,
+      borderColor: "#742774",
+      backgroundColor: "rgba(168, 131, 242 ,0.2)"
     }
   ]
 };
+const data2 = {
+  labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple'],
+  datasets: [{
+    label: 'Number of Votes',
+    data: [12, 19, 3, 5, 5, 3],
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)'
 
+
+    ],
+    borderColor: [
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 159, 64, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(153, 102, 255, 1)'
+
+
+    ],
+    borderWidth: 1
+  }]
+};
+const data3 = {
+  datasets: [{
+    label: "first",
+    fill: true,
+    backgroundColor: "rgba(75,192,192,0.2)",
+    borderColor: "rgba(75,192,192,1)",
+    data: [{ x: 1, y: 2, r: 5 }, { x: 3, y: 5, r: 10 }, { x: 7, y: 3, r: 15 }, { x: 9, y: 7, r: 5 }, { x: 3, y: 2, r: 30 }, { x: 10, y: 2, r: 25 }],
+  }]
+}
 export default function App() {
   return (
     <div className="App">
       <Line data={data} />
+      <Bar data={data2} />
+      <Bubble data={data3} />
     </div>
   );
 }
