@@ -62,8 +62,14 @@ TaskList.propTypes = {
     onArchiveTask: PropTypes.func.isRequired,
 };
 
-TaskList.defaultProps = {
-    loading: false,
-};
+export default connect(
+    ({ tasks }) => ({
+        tasks: tasks.filter(t => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'),
+    }),
+    dispatch => ({
+        onArchiveTask: id => dispatch(archiveTask(id)),
+        onPinTask: id => dispatch(pinTask(id)),
+    })
+)(PureTaskList);
 
 export default TaskList;
